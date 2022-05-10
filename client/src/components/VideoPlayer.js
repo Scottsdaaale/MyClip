@@ -1,7 +1,7 @@
 import React from "react";
 import StarRating from "./StarRating";
 function VideoPlayer(clipObject) {
-  // console.log(videoLink)
+  console.log(clipObject)
   const gygLink = clipObject.clip.clip_url;
   const ratingsData = clipObject.clip.ratings;
   
@@ -11,7 +11,7 @@ function VideoPlayer(clipObject) {
     0
   );
   // console.log(sumOfRatings)
-  // const ratingsAverage = ratingsData.length / sumOfRatings;
+  const ratingsAverage = sumOfRatings / ratingsData.length;
 
   function findTypeOfLink(link) {
     if (link.includes("http")) return link.split("/")[3];
@@ -29,8 +29,8 @@ function VideoPlayer(clipObject) {
             type="video/mp4"
           />
         </video>
-        <StarRating />
-        <h1 id="sum-of-ratings">{sumOfRatings}</h1>
+        <StarRating clipObject={clipObject}/>
+        <h1 id="sum-of-ratings">{ratingsAverage}</h1>
       </center>
     </div>
   );

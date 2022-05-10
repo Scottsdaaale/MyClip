@@ -1,30 +1,36 @@
 import React, { useState } from "react";
 import { FaStar } from "react-icons/fa";
 
-function StarRating() {
+function StarRating({clipObject}) {
   const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
   const [count, setCount] = useState(0)
-
+  console.log(clipObject.clip.users)
   function incrementCount(){
     setCount(prevCount => prevCount + 1)
   }
 
   function handlePostRequestForRating(ratingValue) {
     console.log(ratingValue);
-    fetch("http://127.0.0.1:3000/ratings", {
+    fetch("/ratings", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(ratingValue),
+      body: JSON.stringify({
+        user_id: clipObject.clip.users[0].id,
+        number_of_stars: ratingValue,
+        clip_id: clipObject.clip.id
+        
+        //going to need to have other users rate
+      }),
     });
   }
 
   return (
     <div>
       {[...Array(5)].map((star, i) => {
-        console.log(star)
+        // console.log(star)
         const ratingValue = i + 1;
         return (
           <label key={i}>

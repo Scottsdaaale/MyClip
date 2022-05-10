@@ -5,6 +5,7 @@ import "../App.css";
 function ClipCard() {
   const [ratingData, setRatingData] = useState([]);
   const [clipData, setClipData] = useState([]);
+  console.log(clipData)
   useEffect(() => {
     fetch("/clips")
       .then((r) => r.json())

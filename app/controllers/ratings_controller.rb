@@ -15,6 +15,7 @@ class RatingsController < ApplicationController
 
   # POST /ratings
   def create
+    # byebug
     @rating = Rating.new(rating_params)
 
     if @rating.save
@@ -46,6 +47,6 @@ class RatingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def rating_params
-      params.require(:rating).permit(:number_of_stars)
+      params.permit(:number_of_stars, :clip_id, :user_id)
     end
 end

@@ -3,11 +3,7 @@ import { FaStar } from "react-icons/fa";
 
 function Star() {
   return (
-    <div>
-        <FaStar 
-        className="star"
-        size="40"/>
-    </div>
+    <div></div>
   )
 }
 
