@@ -71,6 +71,11 @@ body{
 width: 400px;
 } */
 
+.video-card ul {
+  padding: 0;
+  list-style-type: none;
+}
+
 #username-on-clip{
   color: grey;
 }
@@ -86,3 +91,32 @@ input[type="radio"] {
 #submit{
   color:grey
 }
+
+.form-box{
+  background-color:rgb(49, 47, 47);
+  border-radius: 5px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin-left: auto;
+  margin-right: auto;
+  top: 50%;
+  height: 200px;
+  width: 200px;
+  /* border: 1px solid */
+}
+
+.field1{
+  /* border-radius: 5px; */
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.submitBtn{
+  
+  cursor: pointer;
+  
+}
+
+

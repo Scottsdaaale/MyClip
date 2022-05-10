@@ -1,17 +1,26 @@
-import React from 'react'
-import VideoPlayer from './VideoPlayer'
-import { useState } from 'react';
-import StarRating from './StarRating' 
-import { render } from "react-dom";
-import '../App.css'
+import React from "react";
+import VideoPlayer from "./VideoPlayer";
+import { useEffect, useState } from "react";
+import "../App.css";
 function ClipCard() {
-
+  const [ratingData, setRatingData] = useState([]);
+  const [clipData, setClipData] = useState([]);
+  useEffect(() => {
+    fetch("/clips")
+      .then((r) => r.json())
+      .then((data) => setClipData(data));
+  }, []);
   return (
-    <div id='video-rating-container'>
-      <VideoPlayer />
-      
+    <div className="video-cards">
+        {clipData.map((clipObject) => {
+          return (
+            <div id="video-rating-container">
+              <VideoPlayer key={clipObject.id} clip={clipObject} />
+            </div>
+          );
+        })}
     </div>
-  )
+  );
 }
 
-export default ClipCard
+export default ClipCard;

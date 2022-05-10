@@ -3,7 +3,7 @@ import ClipCard from './ClipCard'
 function Body() {
   return (
     <div id="body">
-        <ClipCard/>
+        <ClipCard />
     </div>
   )
 }
