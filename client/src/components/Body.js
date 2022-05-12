@@ -1,9 +1,17 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import ClipCard from './ClipCard'
+import Submit from './Submit'
 function Body() {
+  const [clipData, setClipData] = useState([]);
+  useEffect(() => {
+    fetch("/clips")
+      .then((r) => r.json())
+      .then((data) => setClipData(data));
+  }, []);
+  // console.log(clipData)
   return (
     <div id="body">
-        <ClipCard />
+        <ClipCard clipData={clipData} setClipData={setClipData}/>
     </div>
   )
 }

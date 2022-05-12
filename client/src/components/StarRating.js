@@ -1,14 +1,9 @@
 import React, { useState } from "react";
 import { FaStar } from "react-icons/fa";
 
-function StarRating({clipObject}) {
+function StarRating({ clipObject }) {
   const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
-  const [count, setCount] = useState(0)
-  console.log(clipObject.clip.users)
-  function incrementCount(){
-    setCount(prevCount => prevCount + 1)
-  }
 
   function handlePostRequestForRating(ratingValue) {
     console.log(ratingValue);
@@ -20,15 +15,15 @@ function StarRating({clipObject}) {
       body: JSON.stringify({
         user_id: clipObject.clip.users[0].id,
         number_of_stars: ratingValue,
-        clip_id: clipObject.clip.id
-        
-        //going to need to have other users rate
+
+        //need logged in users id when i get that figured out
+        clip_id: clipObject.clip.id,
       }),
     });
   }
-
+  // console.log(clipObject.clip.users[0].id)
   return (
-    <div>
+    <div className="star-rating-container">
       {[...Array(5)].map((star, i) => {
         // console.log(star)
         const ratingValue = i + 1;
@@ -45,7 +40,7 @@ function StarRating({clipObject}) {
             />
             <FaStar
               className="star"
-              color={ratingValue <= (hover || rating) ? "#ffc107" : "#e4e5e9"}
+              color={ratingValue <= (hover || rating) ? "#0066A2" : "C1C1C1"}
               size={40}
               onMouseEnter={() => setHover(ratingValue)}
               onMouseLeave={() => setHover(null)}

@@ -1,25 +1,28 @@
 import React from "react";
-import VideoPlayer from "./VideoPlayer";
 import { useEffect, useState } from "react";
+import VideoPlayer from "./VideoPlayer";
+import Submit from "./Submit";
 import "../App.css";
-function ClipCard() {
+
+function ClipCard({clipData, setClipData}) {
   const [ratingData, setRatingData] = useState([]);
-  const [clipData, setClipData] = useState([]);
-  console.log(clipData)
-  useEffect(() => {
-    fetch("/clips")
-      .then((r) => r.json())
-      .then((data) => setClipData(data));
-  }, []);
+
+  function clipDataMapper(){ 
+    return (
+      clipData.map((clipObject) => {
+        return (
+          <div id="video-rating-container">
+            <VideoPlayer key={clipObject.id} clip={clipObject} />
+          </div>
+        );
+      })
+    )
+  }
+  
   return (
     <div className="video-cards">
-        {clipData.map((clipObject) => {
-          return (
-            <div id="video-rating-container">
-              <VideoPlayer key={clipObject.id} clip={clipObject} />
-            </div>
-          );
-        })}
+        <Submit setClipData={setClipData}/>
+        {clipDataMapper()}
     </div>
   );
 }

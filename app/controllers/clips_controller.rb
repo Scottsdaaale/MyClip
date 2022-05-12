@@ -15,6 +15,7 @@ class ClipsController < ApplicationController
 
   # POST /clips
   def create
+    byebug
     @clip = Clip.new(clip_params)
 
     if @clip.save
@@ -46,6 +47,6 @@ class ClipsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def clip_params
-      params.require(:clip).permit(:clip_url)
+      params.permit(:clip_url, :clip_owner)
     end
 end

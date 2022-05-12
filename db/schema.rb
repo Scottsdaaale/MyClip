@@ -16,6 +16,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_07_195933) do
 
   create_table "clips", force: :cascade do |t|
     t.string "clip_url"
+    t.string "clip_owner"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

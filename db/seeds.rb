@@ -30,16 +30,20 @@ psydegoose = User.create(
 )
 
 clip1 = Clip.create(
-    clip_url: "https://www.gifyourgame.com/GuardlessForspentKingboo"
+    clip_url: "https://www.gifyourgame.com/GuardlessForspentKingboo",
+    clip_owner: "Bamman"
 )
 clip2 = Clip.create(
-    clip_url: "https://www.gifyourgame.com/WagelessFulgentSirweston"
+    clip_url: "https://www.gifyourgame.com/WagelessFulgentSirweston",
+    clip_owner: "xXhush_babyXx"
 )
 clip3 = Clip.create(
-    clip_url: "https://www.gifyourgame.com/SpeedingFleetingShulk"
+    clip_url: "https://www.gifyourgame.com/SpeedingFleetingShulk",
+    clip_owner: "Ljbadge"
 )
 clip4 = Clip.create(
-    clip_url: "https://www.gifyourgame.com/ChangelessAbscessedCardian"
+    clip_url: "https://www.gifyourgame.com/ChangelessAbscessedCardian",
+    clip_owner: "Scottsdaaale"
 )
 
 rating1 = Rating.create(

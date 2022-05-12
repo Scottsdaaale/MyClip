@@ -3,5 +3,5 @@ class Clip < ApplicationRecord
     has_many :users, through: :ratings
 
     validates :clip_url, presence: true
-    validates_uniqueness_of :clip_url
+    # validates_uniqueness_of :clip_url
 end

@@ -1,5 +1,6 @@
 class ClipSerializer < ActiveModel::Serializer
-  attributes :id, :clip_url
+  attributes :id, :clip_url, :clip_owner
   has_many :ratings
-  has_many :users
+  has_one :users
+  
 end
