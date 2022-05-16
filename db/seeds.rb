@@ -9,7 +9,7 @@
 
 puts "Seeding..."
 scottsdaaale = User.create(
-    username: "Scottsdaale",
+    username: "Scottsdaaale",
     password: "123"
 )
 tripyyytv= User.create(

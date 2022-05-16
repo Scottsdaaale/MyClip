@@ -22,7 +22,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_07_195933) do
   end
 
   create_table "ratings", force: :cascade do |t|
-    t.integer "number_of_stars"
+    t.integer "number_of_stars", default: 0
     t.bigint "user_id", null: false
     t.bigint "clip_id", null: false
     t.datetime "created_at", null: false
@@ -33,7 +33,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_07_195933) do
 
   create_table "users", force: :cascade do |t|
     t.string "username"
-    t.string "password"
+    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

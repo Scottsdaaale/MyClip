@@ -1,20 +1,24 @@
 import React from "react";
 import { useState } from "react";
 
-function Submit({ clipData, setClipData }) {
+function Submit({ currentUser }) {
   const [usersClip, setUsersClip] = useState("");
+
   function handlePostRequestForGygUrl(e) {
-    e.preventDefault();
-    fetch("/clips", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        clip_url: usersClip,
-        clip_owner: "placeholder",
-      }),
-    });
+    if (currentUser == null) {
+      alert("Please login or create an account.");
+    } else {
+      fetch("/clips", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          clip_url: usersClip,
+          clip_owner: currentUser.username,
+        }),
+      });
+    }
   }
   return (
     <div className="form-box">

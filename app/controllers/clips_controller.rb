@@ -10,12 +10,16 @@ class ClipsController < ApplicationController
 
   # GET /clips/1
   def show
-    render json: @clip
+    if @clip
+      render json: @clip
+    else
+      render json: {"errors": "Clip not found"}, status: :not_found
+    end
   end
 
   # POST /clips
   def create
-    byebug
+
     @clip = Clip.new(clip_params)
 
     if @clip.save
@@ -36,7 +40,9 @@ class ClipsController < ApplicationController
 
   # DELETE /clips/1
   def destroy
-    @clip.destroy
+    clipToDestroy = Clip.find(params[:id])
+        clipToDestroy.destroy
+        render json: {message: "delete successful"}, status: :ok
   end
 
   private

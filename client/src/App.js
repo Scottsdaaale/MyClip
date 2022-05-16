@@ -1,38 +1,33 @@
 import './App.css';
-// import { useState, useEffect } from "react";
+import {useState, useEffect} from 'react'
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Body from './components/Body'
-import Submit from './components/Submit'
 import Login from './components/Login.js'
 import CreateLogin from './components/CreateLogin'
-import About from './components/About';
-import Star from './components/Star';
-// import VideoPlayer from './components/VideoPlayer'
+import EditAccount from './components/EditAccount'
+
 function App() {
-  // const [count, setCount]= useState(0)
+  const [currentUser, setCurrentUser] = useState(null)
 
-  // useEffect(() => {
-  //   fetch("/hello")
-  //     .then((r) => r.json())
-  //     .then((data) => setCount(data.count));
-  // }, []);
-
+  useEffect(() => {
+    fetch("/userInSession")
+      .then((r) => r.json())
+      .then(data => {setCurrentUser(data)});
+  }, []);
+  
   return (
     
     <div className="app">
       <Router> 
-        {/* <h1>you can do it</h1> */}
-        <Navbar/>
-          <Routes>
-            <Route path="/" element={<Body/>}/>
-            <Route path="about" element={<About/>}/>
-            <Route path="login" element={<Login/>}/>
-            <Route path="login/create-account" element={<CreateLogin/>}/>
-            <Route path="star-test" element={<Star/>}/>
+        <Navbar setCurrentUser={setCurrentUser} currentUser={currentUser}/>
+        <Routes>
+          <Route path="/" element={<Body currentUser={currentUser}/>}/>
+          <Route path="login" element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser}/>}/>
+          <Route path="login/create-account" element={<CreateLogin/>}/>
+          <Route path="login/edit-account" element={<EditAccount currentUser={currentUser}/>}/>
         </Routes>
       </Router>
-      
     </div>
   );
 }

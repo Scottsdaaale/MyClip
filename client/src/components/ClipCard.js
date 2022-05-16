@@ -4,15 +4,21 @@ import VideoPlayer from "./VideoPlayer";
 import Submit from "./Submit";
 import "../App.css";
 
-function ClipCard({clipData, setClipData}) {
-  const [ratingData, setRatingData] = useState([]);
-
+function ClipCard({currentUser}) {
+  
+  const [clipData, setClipData] = useState([]);
+  useEffect(() => {
+    fetch("/clips")
+      .then((r) => r.json())
+      .then((data) => setClipData(data));
+  }, []);
+  
   function clipDataMapper(){ 
     return (
       clipData.map((clipObject) => {
         return (
-          <div id="video-rating-container">
-            <VideoPlayer key={clipObject.id} clip={clipObject} />
+          <div className="video-rating-container">
+            <VideoPlayer key={clipObject.id} setClipData={setClipData} clipData={clipData} clipObject={clipObject} currentUser={currentUser}/>
           </div>
         );
       })
@@ -21,7 +27,7 @@ function ClipCard({clipData, setClipData}) {
   
   return (
     <div className="video-cards">
-        <Submit setClipData={setClipData}/>
+        <Submit currentUser={currentUser}/>
         {clipDataMapper()}
     </div>
   );

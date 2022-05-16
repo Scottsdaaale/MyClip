@@ -1,45 +1,75 @@
-import React from 'react'
-import {FaUserAlt} from 'react-icons/fa'
-import {Link} from 'react-router-dom'
-function Login() {
+import React, { useState } from "react";
+
+import { Link } from "react-router-dom";
+function Login({ setCurrentUser, currentUser }) {
+  const [userToLogin, setUserToLogin] = useState({
+    username: "",
+    password: "",
+  });
+  // console.log(currentUser.error);
+  const handleLogin = (e) => {
+    e.preventDefault();
+    fetch("/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(userToLogin),
+    })
+      .then((r) => r.json())
+      .then((data) => setCurrentUser(data));
+  };
+  // if(currentUser.error == currentUser.error){
+  //   alert('Wrong login try again')
+  // }
+
+  const handleOnChangeUserLogin = (e) => {
+    setUserToLogin({ ...userToLogin, [e.target.name]: e.target.value });
+  };
+  const handleRenderEditAccount=() => {
+    if (currentUser !== null){
+      return(
+        <Link to="edit-account" className="sign-message">Edit account</Link>
+      )
+    }
+  }
+
   return (
     <div className="login-page">
       <div className="log-form">
-        <form 
-        // onSubmit={loginSubmitHandler}
-        >
-           {/* <label className="login-label" htmlFor="signIn">Username</label> */}
+        {currentUser ? (
+          <h1 className="welcome-user">Welcome, {currentUser.username}!</h1>
+        ) : (
+          <></>
+        )}
+        <form onSubmit={handleLogin}>
           <input
+            name="username"
             className="login-input"
-            // onChange={handleUsernameLogin}
+            onChange={handleOnChangeUserLogin}
             id="signIn"
             type="text"
             placeholder="username"
-          >
-          </input>
-          {/* <label className="login-label" htmlFor='loginPassword'>Password</label> */}
+          ></input>
           <input
+            name="password"
             className="login-input"
-            // onChange={handlePasswordLogin}
+            onChange={handleOnChangeUserLogin}
             id="loginPassword"
             type="password"
             placeholder="password"
-          >
-
-          </input>
+          ></input>
           <button className="form-button" type="submit">
             Submit
           </button>
           <p className="sign-message">
-            Not registered? 
-            <Link to="create-account">Create an account</Link>
+            Not registered?
+            <Link to="create-account"> Create an account</Link>
           </p>
+          <br></br>
+          {handleRenderEditAccount()}
         </form>
       </div>
-      {/* <button onClick={(e)=>{handleDelete(currentUser)}}></button> */}
-      {/* <button onClick={(e)=>{handleEdit(currentUser)}}></button> */}
     </div>
   );
 }
 
-export default Login
+export default Login;

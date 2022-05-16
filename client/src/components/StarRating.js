@@ -1,31 +1,31 @@
 import React, { useState } from "react";
 import { FaStar } from "react-icons/fa";
 
-function StarRating({ clipObject }) {
+function StarRating({ clipObject, currentUser }) {
   const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
 
-  function handlePostRequestForRating(ratingValue) {
-    console.log(ratingValue);
-    fetch("/ratings", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        user_id: clipObject.clip.users[0].id,
-        number_of_stars: ratingValue,
-
-        //need logged in users id when i get that figured out
-        clip_id: clipObject.clip.id,
-      }),
-    });
-  }
-  // console.log(clipObject.clip.users[0].id)
+    const handlePostRequestForRating=(ratingValue) => {
+      if (currentUser == null) {
+          alert("Please login or create an account.")
+        }
+      else{
+        fetch("/ratings", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            user_id: currentUser.id,
+            number_of_stars: ratingValue,
+            clip_id: clipObject.id,
+          }),
+        });
+      }
+    }
   return (
     <div className="star-rating-container">
       {[...Array(5)].map((star, i) => {
-        // console.log(star)
         const ratingValue = i + 1;
         return (
           <label key={i}>

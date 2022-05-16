@@ -1,27 +1,45 @@
-import React from 'react'
+import React from "react";
 import { useState } from "react";
 
 function CreateLogin() {
+  const [newUser, setNewUser] = useState({
+    newUsername: "",
+    newPassword: "",
+  });
+  
+  const handleOnChangeNewUser = (e) => {
+    setNewUser({ ...newUser, [e.target.name]: e.target.value });
+  };
+
+  function handleCreateNewUser(e) {
+    fetch('/users', {
+      method: 'POST',
+      headers: {'Content-Type': "application/json"},
+      body: JSON.stringify({
+        username: newUser.newUsername,
+        password: newUser.newPassword
+      })
+    })
+    // window.location.href=('http://localhost:4000/login')
+  }
+
   return (
     <div className="login-page">
       <div className="log-form">
-        <form 
-          className="register-form" 
-          // onSubmit={signUpFormSubmitHandler}
-        >
-          // {/* <label className="login-label" htmlFor='signUpUsername'>Create Username </label> */}
+        <form className="register-form" onSubmit={handleCreateNewUser}>
           <input
+            name="newUsername"
             className="login-input"
             id="signUp"
-            // onChange={(e) => setNewUser(e.target.value)}
+            onChange={handleOnChangeNewUser}
             type="text"
             placeholder="create username"
           ></input>
-          {/* <label className="login-label" htmlFor='signUpPassword'>Create Password</label> */}
           <input
+            name="newPassword"
             className="login-input"
             id="signUpPassword"
-            // onChange={(e) => setNewUserPassword(e.target.value)}
+            onChange={handleOnChangeNewUser}
             type="password"
             placeholder="create password"
           ></input>
@@ -35,8 +53,7 @@ function CreateLogin() {
         </form>
       </div>
     </div>
-  );
+  )
 }
-
 
 export default CreateLogin
