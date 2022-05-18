@@ -1,6 +1,7 @@
 import React from "react";
 import StarRating from "./StarRating";
-import DeleteButton from "./DeleteButton"
+import DeleteButton from "./DeleteButton";
+import Comments from "./Comments";
 function VideoPlayer({ setClipData, clipData, clipObject, currentUser }) {
   const gygLink = clipObject.clip_url;
   const ratingsData = clipObject.ratings;
@@ -32,12 +33,13 @@ function VideoPlayer({ setClipData, clipData, clipObject, currentUser }) {
         <h1 id="username-on-clip">{usersClip}</h1>
         <video className="video-player" width="750" controls loop>
           <source
-            src={`https://media.gifyourgame.com/${findTypeOfLink(gygLink)}_720p.mp4`}
+            src={`https://media.gifyourgame.com/${findTypeOfLink(
+              gygLink
+            )}_720p.mp4`}
             type="video/mp4"
           />
         </video>
       </center>
-
       <StarRating
         id="stars"
         currentUser={currentUser}
@@ -45,10 +47,15 @@ function VideoPlayer({ setClipData, clipData, clipObject, currentUser }) {
       />
       <h1 id="sum-of-ratings">avg stars: {ratingsAverageRounded}</h1>
       {currentUser && clipObject.clip_owner == currentUser.username ? (
-        <DeleteButton setClipData={setClipData} clipData={clipData} clipObject={clipObject}/>
+        <DeleteButton
+          setClipData={setClipData}
+          clipData={clipData}
+          clipObject={clipObject}
+        />
       ) : (
         <></>
       )}
+      <Comments currentUser={currentUser}/>
     </div>
   );
 }

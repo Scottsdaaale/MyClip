@@ -2,6 +2,9 @@ class User < ApplicationRecord
     has_secure_password
     has_many :ratings
     has_many :clips, through: :ratings
+    # has_many :comments
+    
+
 
     validates :username, presence: true
     validates_uniqueness_of :username

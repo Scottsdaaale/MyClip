@@ -30,19 +30,19 @@ psydegoose = User.create(
 )
 
 clip1 = Clip.create(
-    clip_url: "https://www.gifyourgame.com/GuardlessForspentKingboo",
+    clip_url: "https://www.gifyourgame.com/SpeedingFleetingShulk",
     clip_owner: "Bamman"
 )
 clip2 = Clip.create(
-    clip_url: "https://www.gifyourgame.com/WagelessFulgentSirweston",
+    clip_url: "https://www.gifyourgame.com/DesmoidThyrsoidDoet",
     clip_owner: "xXhush_babyXx"
 )
 clip3 = Clip.create(
-    clip_url: "https://www.gifyourgame.com/SpeedingFleetingShulk",
+    clip_url: "https://www.gifyourgame.com/SeedyAskantHades",
     clip_owner: "Ljbadge"
 )
 clip4 = Clip.create(
-    clip_url: "https://www.gifyourgame.com/ChangelessAbscessedCardian",
+    clip_url: "https://www.gifyourgame.com/TastefulHoniedRougethebat",
     clip_owner: "Scottsdaaale"
 )
 
@@ -70,6 +70,47 @@ rating5 = Rating.create(
     user_id: palpa.id,
     clip_id: clip4.id,
     number_of_stars: 1
+)
+
+comment1_1 = Comment.create(
+    user_id: con_bot.id,
+    clip_id: clip1.id,
+    comment: "Nice shot!"
+)
+comment2_1 = Comment.create(
+    user_id: palpa.id,
+    clip_id: clip1.id,
+    comment: "SHEEEEEESH"
+)
+comment1_2 = Comment.create(
+    user_id: tripyyytv.id,
+    clip_id: clip2.id,
+    comment: "nice!"
+)
+comment2_2 = Comment.create(
+    user_id: psydegoose.id,
+    clip_id: clip2.id,
+    comment: "woooooo!"
+)
+comment1_3 = Comment.create(
+    user_id: con_bot.id,
+    clip_id: clip3.id,
+    comment: "daaang"
+)
+comment2_3 = Comment.create(
+    user_id: palpa.id,
+    clip_id: clip3.id,
+    comment: "🔥🔥🔥"
+)
+comment1_4 = Comment.create(
+    user_id: palpa.id,
+    clip_id: clip4.id,
+    comment: "You suck!"
+)
+comment2_4 = Comment.create(
+    user_id: psydegoose.id,
+    clip_id: clip4.id,
+    comment: "Kael stinks!"
 )
 
 puts "Seeding done"
