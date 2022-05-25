@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
   # GET /comments
   def index
     @comments = Comment.all
+    # @comments = Comment.all
 
     render json: @comments
   end
@@ -15,9 +16,15 @@ class CommentsController < ApplicationController
 
   # POST /comments
   def create
+    # byebug
     @comment = Comment.new(comment_params)
 
     if @comment.save
+      clip_being_commented = Clip.find_by(id: params[:clip_id])
+        puts clip_being_commented.amount_of_comments
+        clip_being_commented.amount_of_comments = clip_being_commented.comments.length
+        clip_being_commented.save
+        puts clip_being_commented.amount_of_comments
       render json: @comment, status: :created, location: @comment
     else
       render json: @comment.errors, status: :unprocessable_entity
@@ -46,6 +53,6 @@ class CommentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def comment_params
-      params.require(:comment).permit(:comment, :clip_id, :user_id)
+      params.permit(:comment, :clip_id, :user_id)
     end
 end

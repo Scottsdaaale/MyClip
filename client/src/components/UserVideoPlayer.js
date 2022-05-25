@@ -2,20 +2,24 @@ import React from "react";
 import StarRating from "./StarRating";
 import DeleteButton from "./DeleteButton";
 import Comments from "./Comments";
-function VideoPlayer({ 
+function UserVideoPlayer({ 
   // commentData,
   // setCommentData,
+
   setClipData,
   clipData,
   clipObject,
-  currentUser
-})
+  currentUser 
+}) 
 {
+  
+  // console.log(eachCurrentUserClip);
 
   const gygLink = clipObject.clip_url;
   const ratingsData = clipObject.ratings;
   const usersClip = clipObject.clip_owner;
   // console.log(clipObject.comments)
+
   //adds number_of_stars in each object
   const sumOfRatings = ratingsData.reduce(
     (sum, current) => sum + current.number_of_stars,
@@ -32,6 +36,7 @@ function VideoPlayer({
   }
   //if link has "http" in it split the string at the 3rd "/" else split at the 1st "/"
   function findTypeOfLink(link) {
+    console.log(link)
     if (link.includes("http")) return link.split("/")[3];
     else return link.split("/")[1];
   }
@@ -62,10 +67,9 @@ function VideoPlayer({
           clipObject={clipObject}
         />
       ) : (
-        <button className="space-for-delete-clip-btn">Delete</button>
+        <div className="space-for-delete-clip-btn"></div>
       )}
       <Comments
-        key={clipObject.id}
         // commentData={commentData}
         // setCommentData={setCommentData}
         clipObject={clipObject}
@@ -75,4 +79,4 @@ function VideoPlayer({
   );
 }
 
-export default VideoPlayer;
+export default UserVideoPlayer;

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post "/login", to: "session#create"
   get "/userInSession", to: "session#get_logged_in_user"
   delete "/logout", to: "session#destroy"
+  get "/most_comments", to: "highest_comment_count#index"
 
   
 end

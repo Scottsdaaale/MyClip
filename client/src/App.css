@@ -53,10 +53,11 @@ body{
   border-radius: 5px;
   border-color: grey;
   width: 750px;
-  height: 520px;
+  height: 800px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 50px;
+
 }
 
 .video-card ul {
@@ -235,6 +236,17 @@ input[type="radio"] {
   /* background-image: url('https://t3.ftcdn.net/jpg/04/70/58/44/240_F_470584466_K1Irr9JjgcnhPLy252kzMrBXOJOIR3ok.jpg'); */
 }
 
+.space-for-delete-clip-btn{
+  position: relative;
+  bottom: 98px;
+  left: 630px;
+  width: 100px;
+  outline: 0;
+  border: 0;
+  padding: 15px;
+  background: none;
+}
+
 .delete-clip{
   position: relative;
   bottom: 98px;
@@ -256,3 +268,97 @@ input[type="radio"] {
   background: #005e95;
   color: black;
 }
+.comment-area-and-submit-container{
+  position: relative;
+  bottom: 95px;
+  height: 250px;
+}
+
+.comments-area{
+  padding-left: 15px;
+  width: 720px;
+  height: 235px;
+  overflow: auto;
+  display: flex;
+  flex-direction: row;
+  padding-right: 5px;
+}
+
+.comments{
+  color: rgb(233, 233, 233);
+  /* border: 1px solid; */
+  padding-left: 10px;
+  
+}
+.comment-box{
+  position: relative;
+  top: 5px;
+}
+.comment-bar{
+  /* position: relative;
+  top: 30px; */
+  background-color: #0e0e0e;
+  border: none;
+  overflow: auto;
+  outline: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  resize: none;
+  border-radius: 15px;
+  width: 640px;
+  height: 15px;
+  padding: 10px;
+  color: grey;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  overflow: hidden;
+  
+}
+
+.comment-submit-btn{
+  position: relative;
+  left: 10px;
+  bottom: 13px;
+  background:#007fc9;
+  color:black;
+  border: 0;
+  padding: 10px;
+  width: 70px;
+  cursor: pointer;
+}
+
+.comment-submit-btn:hover, .comment-submit-btn:active, .comment-submit-btn:focus {
+  background: #005e95;
+  color: black;
+}
+
+.comment-form{
+
+}
+
+.comments-area::-webkit-scrollbar {
+  width: 15px;               /* width of the entire scrollbar */
+}
+
+.comments-area::-webkit-scrollbar-track {
+  background: rgb(0, 0, 0);        /* color of the tracking area */
+}
+.comments-area::-webkit-scrollbar-thumb {
+  background-color: #2b2b2b;    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  border: 3px solid rgb(0, 0, 0);  /* creates padding around scroll thumb */
+}
+
+.comment-usernames-container{
+  /* border: 1px solid white; */
+  width: 135px;
+}
+
+.comments-container{
+  /* border: 1px solid white; */
+  /* overflow: hidden; */
+  width: 570px;
+  
+}
+

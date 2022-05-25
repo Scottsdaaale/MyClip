@@ -1,8 +1,11 @@
 class User < ApplicationRecord
     has_secure_password
+    has_many :clips
+    # this is the assosiation/macro for a clip that a user uploads
     has_many :ratings
-    has_many :clips, through: :ratings
-    # has_many :comments
+    has_many :rated_clips, through: :ratings, source: :clips
+    has_many :comments
+    has_many :comment_clips, through: :comments, source: :comments
     
 
 

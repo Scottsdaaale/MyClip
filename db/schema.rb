@@ -16,9 +16,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_17_194745) do
 
   create_table "clips", force: :cascade do |t|
     t.string "clip_url"
-    t.string "clip_owner"
+    t.integer "amount_of_comments", default: 0
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_clips_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -44,11 +46,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_17_194745) do
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
-    t.string "profile_picture"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "clips", "users"
   add_foreign_key "comments", "clips"
   add_foreign_key "comments", "users"
   add_foreign_key "ratings", "clips"

@@ -1,8 +1,21 @@
 import React from "react";
-import Logout from "./Logout"
+import Logout from "./Logout";
 import { Link } from "react-router-dom";
 
-function Navbar({currentUser, setCurrentUser}) {
+function Navbar({ currentUser, setCurrentUser, userClipPagePath}) {
+  function conditionallyRenderProfilePage() {
+    if (currentUser !== null) {
+      return (
+        <Link className="icon-link" to={userClipPagePath}>
+          <img
+            className="nav-icons"
+            src="https://www.seekpng.com/png/full/139-1395950_is-the-consumer-or-supply-chain-partner-expected.png"
+            alt="login"
+          />
+        </Link>
+      );
+    }
+  }
 
   return (
     <div id="navbar">
@@ -19,9 +32,10 @@ function Navbar({currentUser, setCurrentUser}) {
             className="nav-icons"
             src="https://www.seekpng.com/png/full/139-1395950_is-the-consumer-or-supply-chain-partner-expected.png"
             alt="login"
-          />  
+          />
         </Link>
-        {currentUser ? <Logout setCurrentUser={setCurrentUser}/>:<></>}
+        {conditionallyRenderProfilePage()}
+        {currentUser ? <Logout setCurrentUser={setCurrentUser} /> : <></>}
       </div>
     </div>
   );
@@ -45,7 +59,7 @@ export default Navbar;
 //             className="nav-icons"
 //             src="https://www.seekpng.com/png/full/139-1395950_is-the-consumer-or-supply-chain-partner-expected.png"
 //             alt="login"
-//           />  
+//           />
 //         </Link>
 //       )
 //     }

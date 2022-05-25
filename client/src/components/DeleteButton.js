@@ -4,10 +4,11 @@ function DeleteButton({setClipData, clipData, clipObject}) {
     // const clipWeWantToDelete = clipObject.id
     // const clipWeWantToDelete = Object.entries(clipObject)
     // console.log(clipWeWantToDelete)
-    console.log(clipObject)
+    
     const handleDeleteClip = (clipToDelete) => {
+      console.log(clipToDelete.id)
       const id = clipToDelete.id
-      // console.log(clip)
+      console.log(id)
         fetch(`/clips/${clipObject.id}`, {
             method: "DELETE",
           })

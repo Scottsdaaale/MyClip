@@ -3,7 +3,7 @@ import { useState } from "react";
 
 function Submit({ currentUser }) {
   const [usersClip, setUsersClip] = useState("");
-
+  // console.log(currentUser)
   function handlePostRequestForGygUrl(e) {
     if (currentUser == null) {
       alert("Please login or create an account.");
@@ -15,7 +15,7 @@ function Submit({ currentUser }) {
         },
         body: JSON.stringify({
           clip_url: usersClip,
-          clip_owner: currentUser.username,
+          user_id: currentUser.id,
         }),
       });
     }

@@ -4,6 +4,8 @@ class ClipsController < ApplicationController
   # GET /clips
   def index
     @clips = Clip.all
+    # @clips = Clip.all
+
 
     render json: @clips
   end
@@ -19,7 +21,7 @@ class ClipsController < ApplicationController
 
   # POST /clips
   def create
-
+    byebug
     @clip = Clip.new(clip_params)
 
     if @clip.save
@@ -53,6 +55,6 @@ class ClipsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def clip_params
-      params.permit(:clip_url, :clip_owner)
+      params.permit(:clip_url, :user_id)
     end
 end

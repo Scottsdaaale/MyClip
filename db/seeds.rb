@@ -31,19 +31,20 @@ psydegoose = User.create(
 
 clip1 = Clip.create(
     clip_url: "https://www.gifyourgame.com/SpeedingFleetingShulk",
-    clip_owner: "Bamman"
+    user_id: palpa.id
 )
 clip2 = Clip.create(
-    clip_url: "https://www.gifyourgame.com/DesmoidThyrsoidDoet",
-    clip_owner: "xXhush_babyXx"
+    clip_url: "https://www.gifyourgame.com/BlamefulSpringyRishfee",
+    user_id: psydegoose.id
+
 )
 clip3 = Clip.create(
     clip_url: "https://www.gifyourgame.com/SeedyAskantHades",
-    clip_owner: "Ljbadge"
+    user_id: con_bot.id
 )
 clip4 = Clip.create(
     clip_url: "https://www.gifyourgame.com/TastefulHoniedRougethebat",
-    clip_owner: "Scottsdaaale"
+    user_id: scottsdaaale.id
 )
 
 rating1 = Rating.create(
@@ -92,6 +93,11 @@ comment2_2 = Comment.create(
     clip_id: clip2.id,
     comment: "woooooo!"
 )
+comment3_2 = Comment.create(
+    user_id: psydegoose.id,
+    clip_id: clip2.id,
+    comment: "yeeeah!"
+)
 comment1_3 = Comment.create(
     user_id: con_bot.id,
     clip_id: clip3.id,
@@ -112,5 +118,6 @@ comment2_4 = Comment.create(
     clip_id: clip4.id,
     comment: "Kael stinks!"
 )
+Clip.update_amount_of_comments_seeds
 
 puts "Seeding done"
