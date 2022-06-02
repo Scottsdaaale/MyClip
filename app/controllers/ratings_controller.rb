@@ -19,6 +19,10 @@ class RatingsController < ApplicationController
     @rating = Rating.new(rating_params)
 
     if @rating.save
+      # clip_being_rated = Rating.find_by(id: params[:clip_id])
+      # clip_being_rated.number_of_stars = clip_being_rated.number_of_stars
+      # clip_being_rated.save
+
       render json: @rating, status: :created, location: @rating
     else
       render json: @rating.errors, status: :unprocessable_entity
@@ -47,6 +51,6 @@ class RatingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def rating_params
-      params.permit(:number_of_stars, :clip_id, :user_id)
+      params.permit(:number_of_stars, :final_rating, :clip_id, :user_id)
     end
 end

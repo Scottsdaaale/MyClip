@@ -3,10 +3,8 @@ class ClipsController < ApplicationController
 
   # GET /clips
   def index
+    # @clips = Clip.all.order("id ASC")
     @clips = Clip.all
-    # @clips = Clip.all
-
-
     render json: @clips
   end
 
@@ -21,7 +19,7 @@ class ClipsController < ApplicationController
 
   # POST /clips
   def create
-    byebug
+    # byebug
     @clip = Clip.new(clip_params)
 
     if @clip.save

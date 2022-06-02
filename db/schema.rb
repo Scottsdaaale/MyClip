@@ -35,6 +35,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_17_194745) do
 
   create_table "ratings", force: :cascade do |t|
     t.integer "number_of_stars", default: 0
+    t.integer "final_rating", default: 0
     t.bigint "user_id", null: false
     t.bigint "clip_id", null: false
     t.datetime "created_at", null: false

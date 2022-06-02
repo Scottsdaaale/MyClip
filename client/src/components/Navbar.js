@@ -9,8 +9,8 @@ function Navbar({ currentUser, setCurrentUser, userClipPagePath}) {
         <Link className="icon-link" to={userClipPagePath}>
           <img
             className="nav-icons"
-            src="https://www.seekpng.com/png/full/139-1395950_is-the-consumer-or-supply-chain-partner-expected.png"
-            alt="login"
+            src="https://i.imgur.com/cDnBDnE.png"
+            alt="Profile"
           />
         </Link>
       );
@@ -24,9 +24,10 @@ function Navbar({ currentUser, setCurrentUser, userClipPagePath}) {
           <img
             className="nav-icons"
             src="https://www.pngkey.com/png/full/823-8236029_senior-care-icon-home-page-icon-grey.png"
-            alt="keyboard icon"
+            alt="Home"
           />
         </Link>
+        {conditionallyRenderProfilePage()}
         <Link className="icon-link" to="login">
           <img
             className="nav-icons"
@@ -34,7 +35,6 @@ function Navbar({ currentUser, setCurrentUser, userClipPagePath}) {
             alt="login"
           />
         </Link>
-        {conditionallyRenderProfilePage()}
         {currentUser ? <Logout setCurrentUser={setCurrentUser} /> : <></>}
       </div>
     </div>

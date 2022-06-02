@@ -32,9 +32,11 @@ body{
 .nav-icons{
   height: 30px;
   width: 30px;
+  /* padding:10px; */
   margin-left: 10px;
   margin-right: 10px;
   margin-top: 10px
+
 }
 
 #about-div{
@@ -333,10 +335,6 @@ input[type="radio"] {
   color: black;
 }
 
-.comment-form{
-
-}
-
 .comments-area::-webkit-scrollbar {
   width: 15px;               /* width of the entire scrollbar */
 }
@@ -362,3 +360,34 @@ input[type="radio"] {
   
 }
 
+.filter-button-container{
+  /* border: 1px solid red; */
+  position: relative;
+  margin:auto;
+  height: 35px;
+  width: 282px;
+  left: 200px;
+  top: 150px;
+}
+
+.filter-button{
+  font-size: 20px;
+  margin-right: 500px;
+  /* color: rgb(193, 193, 193); */
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 10px;
+  cursor: pointer;
+  color: grey;
+}
+
+
+.filter-button:focus{
+  color: #007fc9
+}
+
+
+.filter-button:hover {
+  background-color: rgb(19, 19, 19)
+}

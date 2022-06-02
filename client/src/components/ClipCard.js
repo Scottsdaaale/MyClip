@@ -8,56 +8,71 @@ function ClipCard({
   setClipData,
   clipData,
   currentUser,
-  switchFetches, 
-  setSwitchFetches
+  switchFetches,
+  setSwitchFetches,
 }) {
-  console.log(switchFetches)
-  // function onChangeForFilter(e) {
-  //   if(e.target.value === 'mostComments'){
-  //     setSwitchFetches(false)
-  //   }
-  // }
-  function onChangeForFilter(e) {
-    e.preventDefault();
-    setSwitchFetches(false)
+
+  const [changeColor, setChangeColor] = useState("grey")
+  const [findWhichClicked, setFindWhichClicked] = useState(1)
+  const [buttonOneOn, setButtonOneOn] = useState(false)
+  const [buttonTwoOn, setButtonTwoOn] = useState(false)
+
+  function onChangeForFilter() {
+    setSwitchFetches("mostComments")
   }
 
-console.log(switchFetches);
-
-
-  function clipDataMapper(){ 
-    return (
-      clipData.map((clipObject) => {
-        return (
-          <div className="video-rating-container">
-            <VideoPlayer
-              key={clipObject.id}
-              // commentData={commentData}
-              // setCommentData={setCommentData}
-              clipData={clipData}
-              setClipData={setClipData} 
-              clipObject={clipObject}
-              currentUser={currentUser}
-            />
-          </div>
-        );
-      }) 
-    )
+  function onChangeForFilter2() {
+    setSwitchFetches("new");
   }
-  
+
+  function clipDataMapper() {
+    return clipData.map((clipObject) => {
+      return (
+        <div className="video-rating-container">
+          <VideoPlayer
+            key={clipObject.id}
+            // commentData={commentData}
+            // setCommentData={setCommentData}
+            clipData={clipData}
+            setClipData={setClipData}
+            clipObject={clipObject}
+            currentUser={currentUser}
+          />
+        </div>
+      );
+    });
+  }
+
   return (
     <div className="video-cards">
-      <label style={{ color: 'blue'}} for="cars">Filter clips:</label>
-        {/* <select name="Sort Clips" 
-        // onChange={onChangeForFilter}
-        >
-          <option  value="rating">Rating</option>
-          <option value="new">New</option>
-          <option value="mostComments">Most Comments</option>
-        </select> */}
-        <button onClick={onChangeForFilter}>Most Comments</button>
-        <Submit currentUser={currentUser}/>
-        {clipDataMapper()}
+      {/* <select name="Sort Clips" onChange={onChangeForFilter}>
+        <option  value="rating">Rating</option>
+        <option value="new">New</option>
+        <option value="mostComments">Most Comments</option>
+      </select> */}
+      <div className="filter-button-container">
+        <button className="filter-button" 
+        onClick={
+          // ()=>
+          // {
+          onChangeForFilter
+          // (); 
+          // handleChangeColor()
+          // }
+          }
+          >Most Comments</button>
+        <button className="filter-button" 
+        onClick={
+          // ()=>{
+            onChangeForFilter2
+            // (); 
+            // handleChangeColor2()
+            // }
+            }
+            >New Posts</button>
+      </div>
+      <Submit currentUser={currentUser} />
+      {clipDataMapper()}
     </div>
   );
 }

@@ -10,24 +10,25 @@ import UserClips from "./components/UserClips";
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [clipData, setClipData] = useState([]);
-  const [switchFetches, setSwitchFetches] = useState(true);   
+  const [switchFetches, setSwitchFetches] = useState("default");   
   const userClipPagePath = currentUser!==null?`${currentUser.id}-clips`:null
   // const [commentData, setCommentData] = useState([]);
   
-  console.log("before useeffect: " + switchFetches);
   useEffect(() => {
-    if (switchFetches == false) {
-      console.log("inside useeffect: " + switchFetches);
+    if (switchFetches == "mostComments") {
       fetch("/most_comments")
         .then((r) => r.json())
         .then((data) => setClipData(data));
-    } else {
-        fetch("/clips")
+    } else if (switchFetches == "new") {
+      fetch("/newest_post")
         .then((r) => r.json())
-        .then((data) => setClipData(data));  
+        .then((data) => setClipData(data));
+    } else {
+      fetch("/default_order")
+        .then((r) => r.json())
+        .then((data) => setClipData(data));
     }
   }, [switchFetches]);
-  console.log("after useeffect: " + switchFetches);
 
   // useEffect(() => {
   //   fetch("/comments")

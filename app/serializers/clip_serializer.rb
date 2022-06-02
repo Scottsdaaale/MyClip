@@ -6,12 +6,9 @@ class ClipSerializer < ActiveModel::Serializer
   has_many :comments
   has_many :users_who_commented
 
+
   def clip_owner
     return self.object.user.username
-  end
-
-  def highest_rating
-    return self.object.ratings
   end
 
 end
