@@ -12,7 +12,6 @@ function App() {
   const [clipData, setClipData] = useState([]);
   const [switchFetches, setSwitchFetches] = useState("default");   
   const userClipPagePath = currentUser!==null?`${currentUser.id}-clips`:null
-  // const [commentData, setCommentData] = useState([]);
   
   useEffect(() => {
     if (switchFetches == "mostComments") {
@@ -29,12 +28,6 @@ function App() {
         .then((data) => setClipData(data));
     }
   }, [switchFetches]);
-
-  // useEffect(() => {
-  //   fetch("/comments")
-  //     .then((r) => r.json())
-  //     .then((data) => setCommentData(data));
-  // }, []);
 
   useEffect(() => {
     fetch("/userInSession")
